@@ -24,12 +24,18 @@
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
-            "Database\\Seeders\\": "database/seeders/"
+            "Database\\Seeders\\": "database/seeders/",
+            "Roofr\\Parking\\": "modules/Parking/src",
+            "Roofr\\Booking\\": "modules/Booking/src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "Roofr\\Parking\\Tests\\": "modules/Parking/Tests",
+            "Roofr\\Parking\\Database\\Factories\\": "modules/Parking/database/factories",
+            "Roofr\\Booking\\Tests\\": "modules/Booking/Tests",
+            "Roofr\\Booking\\Database\\Factories\\": "modules/Booking/database/factories"
         }
     },
     "scripts": {
