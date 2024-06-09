@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('status');
             $table->decimal('paid_amount', 8, 2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

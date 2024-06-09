@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Roofr\Parking\Http\Controller\ParkingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/', function () {
-    return view('welcome');
-});

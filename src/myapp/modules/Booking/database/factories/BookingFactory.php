@@ -19,11 +19,14 @@ class BookingFactory extends Factory
      */
     public function definition(): array
     {
+        $startTime = $this->faker->dateTimeBetween('-1 month', '+1 month');
+        $endTime = (clone $startTime)->modify('+2 hours');
+
         return [
             'user_id' => \App\Models\User::factory(),
             'parking_slot_id' => \Roofr\Parking\Models\ParkingLot::factory(),
-            'start_time' => $this->faker->dateTimeBetween('-1 month', '+1 month'),
-            'end_time' => $this->faker->dateTimeBetween('-1 month', '+1 month'),
+            'start_time' => $startTime,
+            'end_time' => $endTime,
             'status' => $this->faker->randomElement(['booked', 'completed', 'cancelled']),
             'paid_amount' => $this->faker->randomFloat(2, 0, 100),
         ];
