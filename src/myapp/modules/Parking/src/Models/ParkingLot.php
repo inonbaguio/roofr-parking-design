@@ -9,7 +9,6 @@ use Roofr\Booking\Models\Booking;
 use Roofr\Parking\Database\Factories\ParkingLotFactory;
 use Roofr\Parking\Enums\ParkingAvailability;
 
-
 class ParkingLot extends Model
 {
     use SoftDeletes, HasFactory;

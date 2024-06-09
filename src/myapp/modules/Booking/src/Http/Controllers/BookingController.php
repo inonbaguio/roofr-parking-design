@@ -2,20 +2,19 @@
 
 namespace Roofr\Booking\Http\Controllers;
 
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Routing\Controller;
 use Roofr\Booking\Http\Resources\BookingResource;
 use Roofr\Booking\Models\Booking;
-use Roofr\Parking\Http\Resources\ParkingLotResource;
-use Roofr\Parking\Models\ParkingLot;
 
 class BookingController extends Controller
 {
-    public function getBookings()
+    public function getBookings(): JsonResource
     {
         return BookingResource::collection(Booking::all());
     }
 
-    public function getBookingById(Booking $booking)
+    public function getBookingById(Booking $booking) : JsonResource
     {
         return new BookingResource($booking);
     }

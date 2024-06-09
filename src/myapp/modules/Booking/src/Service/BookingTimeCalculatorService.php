@@ -8,7 +8,7 @@ use Roofr\Parking\DTOs\ReserveParkingData;
 
 class BookingTimeCalculatorService
 {
-    public function canAccomodateRequestedParkingTime(ReserveParkingData $reserveParkingData)
+    public function canAccomodateRequestedParkingTime(ReserveParkingData $reserveParkingData): bool
     {
         $overlappingBookings = Booking::where('parking_slot_id', $reserveParkingData->parkingLotId)
             ->where(function ($query) use ($reserveParkingData) {
