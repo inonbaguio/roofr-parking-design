@@ -11,7 +11,7 @@
         <testsuite name="Feature">
             <directory>tests/Feature</directory>
         </testsuite>
-        <testsuite name="Moduless Tests">
+        <testsuite name="Modules Tests">
             <directory>modules/*/tests/Api</directory>
         </testsuite>
     </testsuites>
