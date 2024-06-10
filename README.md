@@ -17,6 +17,7 @@
 4. [ReserveParkingLot](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Actions/ReserveParkingLot.php) contains the main business logic for reserving a parking lot.
 5. There is a simple implementation of Event/Listeners as well to abstract the logic of sending an email to the user, updating the stastuses of the parking and booking
 6. TestCases are located in the [ParkingControllerTest](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/tests/Api/ParkingControllerTest.php)
+7. I have made some changes in the [fastcgi_cache](https://github.com/inonbaguio/roofr-parking-design/blob/master/nginx/conf.d/app.conf#L40), we might want to avoid these kind of caching mechanism in development nginx setups. The full response of the HTTP is being hard-cache in the containers.
 
 ## Assumptions
 1. The user is already authenticated and the user_id is passed in the request. I have not included an authentication layer on this project, I guess the highlight of this project should be the actual reservation of the parkign system
@@ -24,3 +25,9 @@
 3. There is customer validation (Rules)[https://github.com/inonbaguio/roofr-parking-design/tree/master/src/myapp/modules/Parking/src/Http/Rules].
    - (FutureTimeRule)[https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Rules/FutureTimeRule.php]
    - (MinimumParkingTimeInterval)[https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Rules/MinimumParkingTimeInterval.php]
+
+## Future Improvements
+1. Add a proper authentication layer. JWT authentication
+2. Scheduled jobs for expiring the parking reservations
+3. Payments for the parking reservation
+4. Logic improvements for the parking slot reservation
