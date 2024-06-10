@@ -14,14 +14,16 @@ class CreateBookingForParking
      */
     public function handle(ParkingSlotHasBeenReserved $event): void
     {
-        $event->parkingLot->createBooking([
+        $event->parkingLot->createBooking(
+            [
             'parking_slot_id' => $event->parkingLot->id,
             'user_id' => User::latest('id')->first()->id, // auth is not covered yet
             'paid_amount' => $this->calculateAmount($event->reserveParkingData->startTime, $event->reserveParkingData->endTime, $event->parkingLot->rate_per_hour),
             'start_time' => $event->reserveParkingData->startTime,
             'end_time' => $event->reserveParkingData->endTime,
             'status' => BookingStatus::BOOKED->value,
-        ]);
+            ]
+        );
     }
 
     private function calculateAmount(string $startTime, string $endTime, float $ratePerHour) :float

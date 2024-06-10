@@ -11,17 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('booking', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('parking_slot_id');
-            $table->timestamp('start_time');
-            $table->timestamp('end_time');
-            $table->string('status');
-            $table->decimal('paid_amount', 8, 2);
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        Schema::create(
+            'booking', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('user_id');
+                $table->foreignId('parking_slot_id');
+                $table->timestamp('start_time');
+                $table->timestamp('end_time');
+                $table->string('status');
+                $table->decimal('paid_amount', 8, 2);
+                $table->timestamps();
+                $table->softDeletes();
+            }
+        );
     }
 
     /**

@@ -19,7 +19,8 @@ class ReserveParkingLot
         public BookingTimeCalculatorService $bookingTimeCalculatorService,
         protected DatabaseManager $databaseManager,
         protected Dispatcher $events
-    ) {}
+    ) {
+    }
 
     public function handle(ReserveParkingData $reserveParkingData) : ParkingLot
     {
@@ -42,14 +43,16 @@ class ReserveParkingLot
 
         $parkingLot = ParkingLot::findOrFail($reserveParkingData->parkingLotId);
 
-        $this->databaseManager->transaction(function () use ($parkingLot, $reserveParkingData) {
-            $this->events->dispatch(
-                new ParkingSlotHasBeenReserved(
-                    $parkingLot,
-                    $reserveParkingData
-                )
-            );
-        });
+        $this->databaseManager->transaction(
+            function () use ($parkingLot, $reserveParkingData) {
+                $this->events->dispatch(
+                    new ParkingSlotHasBeenReserved(
+                        $parkingLot,
+                        $reserveParkingData
+                    )
+                );
+            }
+        );
 
         return $parkingLot->fresh();
     }

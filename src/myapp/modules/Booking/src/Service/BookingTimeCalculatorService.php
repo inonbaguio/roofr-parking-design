@@ -11,10 +11,12 @@ class BookingTimeCalculatorService
     public function canAccomodateRequestedParkingTime(ReserveParkingData $reserveParkingData): bool
     {
         $overlappingBookings = Booking::where('parking_slot_id', $reserveParkingData->parkingLotId)
-            ->where(function ($query) use ($reserveParkingData) {
-                $query->whereBetween('start_time', [$reserveParkingData->startTime, $reserveParkingData->endTime])
-                    ->orWhereBetween('end_time', [$reserveParkingData->startTime, $reserveParkingData->endTime]);
-            })
+            ->where(
+                function ($query) use ($reserveParkingData) {
+                    $query->whereBetween('start_time', [$reserveParkingData->startTime, $reserveParkingData->endTime])
+                        ->orWhereBetween('end_time', [$reserveParkingData->startTime, $reserveParkingData->endTime]);
+                }
+            )
             ->exists();
 
         if ($overlappingBookings) {

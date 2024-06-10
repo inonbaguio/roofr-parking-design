@@ -26,32 +26,40 @@ class ParkingLotFactory extends Factory
             'latitude' => $this->faker->randomFloat(8, -90, 90),
             'longitude' => $this->faker->randomFloat(8, -180, 180),
             'rate_per_hour' => $this->faker->randomFloat(2, 0, 100),
-            'status' => $this->faker->randomElement([
+            'status' => $this->faker->randomElement(
+                [
                 ParkingAvailability::AVAILABLE->value,
                 ParkingAvailability::RESERVED->value,
                 ParkingAvailability::OCCUPIED->value,
-            ]),
+                ]
+            ),
         ];
     }
 
     public function available()
     {
-        return $this->state([
+        return $this->state(
+            [
             'status' => ParkingAvailability::AVAILABLE->value,
-        ]);
+            ]
+        );
     }
 
     public function reserved()
     {
-        return $this->state([
+        return $this->state(
+            [
             'status' => ParkingAvailability::RESERVED->value,
-        ]);
+            ]
+        );
     }
 
     public function occupied()
     {
-        return $this->state([
+        return $this->state(
+            [
             'status' => ParkingAvailability::OCCUPIED->value,
-        ]);
+            ]
+        );
     }
 }

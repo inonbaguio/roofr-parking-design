@@ -17,5 +17,6 @@ class ParkingSlotHasBeenReserved
      * Create a new event instance.
      */
     public function __construct(public ParkingLot $parkingLot, public ReserveParkingData $reserveParkingData)
-    { }
+    { 
+    }
 }

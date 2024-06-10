@@ -26,12 +26,14 @@ class ParkingControllerTest extends TestCase
     {
         $parkingLot = ParkingLot::factory()->available()->create();
 
-        $response = $this->postJson('/api/parking-lot/reserve', [
+        $response = $this->postJson(
+            '/api/parking-lot/reserve', [
             'vehicleType' => VehicleTypes::Motorcycle->value,
             'parkingLotId' => $parkingLot->id,
             'startTime' => now()->addHour()->toDateTimeString(),
             'endTime' => now()->addHours(2)->toDateTimeString(),
-        ]);
+            ]
+        );
 
         $response->assertStatus(201);
         $response->assertJsonStructure(['id', 'rate_per_hour', 'status']);
@@ -41,12 +43,14 @@ class ParkingControllerTest extends TestCase
         $this->assertEquals(ParkingAvailability::RESERVED->value, $parkingLot->status);
         $this->assertEquals($parkingLot->bookings->first()->status, BookingStatus::BOOKED->value);
 
-        $response = $this->postJson('/api/parking-lot/reserve', [
+        $response = $this->postJson(
+            '/api/parking-lot/reserve', [
             'vehicleType' => VehicleTypes::Motorcycle->value,
             'parkingLotId' => $parkingLot->id,
             'startTime' => now()->addHour()->toDateTimeString(),
             'endTime' => now()->addHours(2)->toDateTimeString(),
-        ]);
+            ]
+        );
 
         $response->assertStatus(500);
         $response->assertJsonPath('message', 'Parking slot is already occupied.');
@@ -56,12 +60,14 @@ class ParkingControllerTest extends TestCase
     {
         $parkingLot = ParkingLot::factory()->available()->create();
 
-        $response = $this->postJson('/api/parking-lot/reserve', [
+        $response = $this->postJson(
+            '/api/parking-lot/reserve', [
             'vehicleType' => VehicleTypes::Car->value,
             'parkingLotId' => $parkingLot->id,
             'startTime' => now()->addHour()->toDateTimeString(),
             'endTime' => now()->addHours(2)->toDateTimeString(),
-        ]);
+            ]
+        );
 
         $response->assertStatus(201);
         $response->assertJsonStructure(['id', 'rate_per_hour', 'status']);
@@ -76,12 +82,14 @@ class ParkingControllerTest extends TestCase
     {
         $parkingLot = ParkingLot::factory()->available()->count(10)->create();
 
-        $response = $this->postJson('/api/parking-lot/reserve', [
+        $response = $this->postJson(
+            '/api/parking-lot/reserve', [
             'vehicleType' => VehicleTypes::Van->value,
             'parkingLotId' => 5,
             'startTime' => now()->addHour()->toDateTimeString(),
             'endTime' => now()->addHours(2)->toDateTimeString(),
-        ]);
+            ]
+        );
 
         $response->assertStatus(201);
     }
@@ -93,12 +101,14 @@ class ParkingControllerTest extends TestCase
         ParkingLot::whereIn('id', [4, 6])
             ->update(['status' => ParkingAvailability::OCCUPIED->value]);
 
-        $response = $this->postJson('/api/parking-lot/reserve', [
+        $response = $this->postJson(
+            '/api/parking-lot/reserve', [
             'vehicleType' => VehicleTypes::Van->value,
             'parkingLotId' => 5,
             'startTime' => now()->addHour()->toDateTimeString(),
             'endTime' => now()->addHours(2)->toDateTimeString(),
-        ]);
+            ]
+        );
 
         $response->assertStatus(500);
         $response->assertJsonPath('message', 'Adjacent parking slots are not available for the vehicle type. Please try again.');
@@ -106,12 +116,14 @@ class ParkingControllerTest extends TestCase
         ParkingLot::whereIn('id', [4])
             ->update(['status' => ParkingAvailability::AVAILABLE->value]);
 
-        $response = $this->postJson('/api/parking-lot/reserve', [
+        $response = $this->postJson(
+            '/api/parking-lot/reserve', [
             'vehicleType' => VehicleTypes::Van->value,
             'parkingLotId' => 5,
             'startTime' => now()->addHour()->toDateTimeString(),
             'endTime' => now()->addHours(2)->toDateTimeString(),
-        ]);
+            ]
+        );
 
         $response->assertStatus(201);
     }
