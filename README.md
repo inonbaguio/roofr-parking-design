@@ -12,7 +12,7 @@
 
 ## Main Changes
 
-1. I have designed this with a modular code structure, so that the code is more maintainable and scalable.
+1. I have designed this with a modular code structure, so that the code is more maintainable and scalable. Main code namespace is in [/modules](https://github.com/inonbaguio/roofr-parking-design/tree/master/src/myapp/modules) folder
 2. The root of the implementation is in the [ParkingController](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Controllers/ParkingController.php)
 3. I used laravel-data as the main DTO for the data transfer between the controller and the service layer.
 4. [ReserveParkingLot](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Actions/ReserveParkingLot.php) contains the main business logic for reserving a parking lot.
