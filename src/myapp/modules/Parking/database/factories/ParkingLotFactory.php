@@ -33,4 +33,25 @@ class ParkingLotFactory extends Factory
             ]),
         ];
     }
+
+    public function available()
+    {
+        return $this->state([
+            'status' => ParkingAvailability::AVAILABLE->value,
+        ]);
+    }
+
+    public function reserved()
+    {
+        return $this->state([
+            'status' => ParkingAvailability::RESERVED->value,
+        ]);
+    }
+
+    public function occupied()
+    {
+        return $this->state([
+            'status' => ParkingAvailability::OCCUPIED->value,
+        ]);
+    }
 }

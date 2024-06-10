@@ -5,13 +5,13 @@ namespace Roofr\Booking\Listeners;
 
 use Roofr\Booking\Events\ParkingSlotHasBeenReserved;
 
-class OccupyParkingSlot
+class ReserveParkingSlot
 {
     /**
      * Handle the event.
      */
     public function handle(ParkingSlotHasBeenReserved $event): void
     {
-        $event->parkingLot->occupy();
+        $event->parkingLot->reserve();
     }
 }

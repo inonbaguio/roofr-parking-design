@@ -1,3 +1,6 @@
 src/supervisord.pid
 src/myapp/vendor
 .idea
+
+src/myapp/myapp
+src/myapp/.phpunit.result.cache

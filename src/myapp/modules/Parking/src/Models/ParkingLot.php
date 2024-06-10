@@ -44,6 +44,12 @@ class ParkingLot extends Model
         $this->save();
     }
 
+    public function reserve()
+    {
+        $this->status = ParkingAvailability::RESERVED->value;
+        $this->save();
+    }
+
     public function bookings(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Booking::class, 'parking_slot_id',   'id');

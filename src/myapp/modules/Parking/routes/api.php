@@ -7,6 +7,6 @@ use Roofr\Parking\Http\Controllers\ParkingController;
 Route::prefix('/parking-lot')->group(function () {
     Route::get('/', [ParkingController::class, 'getParkingLots']);
     Route::get('/{parkingLot}', [ParkingController::class, 'getParkingLotById']);
-    Route::post('/park', [ParkingController::class, 'reserverParkingLot']);
+    Route::post('/reserve', [ParkingController::class, 'reserveParkingLot']);
 });
 

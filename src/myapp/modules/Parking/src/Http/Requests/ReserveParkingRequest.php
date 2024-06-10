@@ -1,6 +1,6 @@
 <?php
 
-namespace Roofr\Parking\src\Http\Requests;
+namespace Roofr\Parking\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Roofr\Parking\Http\Rules\FutureTimeRule;

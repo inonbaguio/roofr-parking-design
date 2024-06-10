@@ -34,9 +34,9 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-            "Roofr\\Parking\\Tests\\": "modules/Parking/Tests",
+            "Roofr\\Parking\\Tests\\": "modules/Parking/tests",
             "Roofr\\Parking\\Database\\Factories\\": "modules/Parking/database/factories",
-            "Roofr\\Booking\\Tests\\": "modules/Booking/Tests",
+            "Roofr\\Booking\\Tests\\": "modules/Booking/tests",
             "Roofr\\Booking\\Database\\Factories\\": "modules/Booking/database/factories"
         }
     },

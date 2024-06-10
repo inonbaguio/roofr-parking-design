@@ -1,6 +1,6 @@
 <?php
 
-namespace Roofr\Parking\src\Actions;
+namespace Roofr\Parking\Actions;
 
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Database\DatabaseManager;

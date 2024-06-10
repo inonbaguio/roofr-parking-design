@@ -6,11 +6,11 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Routing\Controller;
 use Illuminate\Validation\ValidationException;
+use Roofr\Parking\Actions\ReserveParkingLot;
 use Roofr\Parking\Http\Requests\GetParkingLotsRequests;
+use Roofr\Parking\Http\Requests\ReserveParkingRequest;
 use Roofr\Parking\Http\Resources\ParkingLotResource;
 use Roofr\Parking\Models\ParkingLot;
-use Roofr\Parking\src\Actions\ReserveParkingLot;
-use Roofr\Parking\src\Http\Requests\ReserveParkingRequest;
 
 class ParkingController extends Controller
 {
@@ -24,7 +24,7 @@ class ParkingController extends Controller
         return new ParkingLotResource($parkingLot);
     }
 
-    public function reserverParkingLot(ReserveParkingRequest $request, ReserveParkingLot $reserveParkingLot) : JsonResponse|JsonResource
+    public function reserveParkingLot(ReserveParkingRequest $request, ReserveParkingLot $reserveParkingLot) : JsonResponse
     {
         try {
             $data = $request->getData();
@@ -34,6 +34,6 @@ class ParkingController extends Controller
             return response()->json(['error' => $e->errors()], 400);
         }
 
-        return new ParkingLotResource(ParkingLot::findOrFail($request->parkingLotId));
+        return response()->json(new ParkingLotResource(ParkingLot::findOrFail($request->parkingLotId)), 201);
     }
 }

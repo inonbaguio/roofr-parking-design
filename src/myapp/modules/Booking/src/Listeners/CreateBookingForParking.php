@@ -2,6 +2,7 @@
 
 namespace Roofr\Booking\Listeners;
 
+use App\Models\User;
 use Illuminate\Support\Carbon;
 use Roofr\Booking\Enums\BookingStatus;
 use Roofr\Booking\Events\ParkingSlotHasBeenReserved;
@@ -15,7 +16,7 @@ class CreateBookingForParking
     {
         $event->parkingLot->createBooking([
             'parking_slot_id' => $event->parkingLot->id,
-            'user_id' => 5,
+            'user_id' => User::latest('id')->first()->id, // auth is not covered yet
             'paid_amount' => $this->calculateAmount($event->reserveParkingData->startTime, $event->reserveParkingData->endTime, $event->parkingLot->rate_per_hour),
             'start_time' => $event->reserveParkingData->startTime,
             'end_time' => $event->reserveParkingData->endTime,
