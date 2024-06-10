@@ -86,7 +86,7 @@ class ParkingControllerTest extends TestCase
         $response->assertStatus(201);
     }
 
-    public function test_unavailable_adjancet_parking_spot_should_result_into_failure_into_booking()
+    public function test_unavailable_adjacent_parking_spot_should_result_into_failure_into_booking()
     {
         ParkingLot::factory()->available()->count(10)->create();
 
