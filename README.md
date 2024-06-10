@@ -14,7 +14,7 @@
 
 1. I have designed this with a modular code structure, so that the code is more maintainable and scalable. Main code namespace is in [/modules](https://github.com/inonbaguio/roofr-parking-design/tree/master/src/myapp/modules) folder
 2. The root of the implementation is in the [ParkingController](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Controllers/ParkingController.php)
-3. I used laravel-data as the main DTO for the data transfer between the controller and the service layer.
+3. I used [laravel-data](https://spatie.be/docs/laravel-data/v4/validation/introduction) as the main DTO for the data transfer between the controller and the service layer.
 4. [ReserveParkingLot](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Actions/ReserveParkingLot.php) contains the main business logic for reserving a parking lot.
 5. There is a simple implementation of [Event/Listeners](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Booking/src/BookingEventServiceProvider.php) as well to abstract the logic of sending an email to the user, updating the stastuses of the parking and booking
 6. TestCases are located in the [ParkingControllerTest](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/tests/Api/ParkingControllerTest.php)
