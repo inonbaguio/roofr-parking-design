@@ -24,6 +24,7 @@
 10. Created some custom Laravel Custom [Rules](https://github.com/inonbaguio/roofr-parking-design/tree/master/src/myapp/modules/Parking/src/Http/Rules).
    - [FutureTimeRule](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Rules/FutureTimeRule.php)
    - [MinimumParkingTimeInterval](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Rules/MinimumParkingTimeInterval.php)
+   - [ValidVehicleType](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Rules/ValidVehicleType.php)
 
 ## Sample API Requests:
 
