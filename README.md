@@ -20,6 +20,10 @@
 6. TestCases are located in the [ParkingControllerTest](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/tests/Api/ParkingControllerTest.php)
 7. There are some factories as well located in [ParkingLotFactory](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/database/factories/ParkingLotFactory.php), [BookingFactory](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Booking/database/factories/BookingFactory.php)
 8. I have made some changes in the [fastcgi_cache](https://github.com/inonbaguio/roofr-parking-design/blob/master/nginx/conf.d/app.conf#L40), due to some caching issues that I encountered during development. (i.e.: whole API responses is being cached by the containers and had to restart for code changes to take effect)
+9. There is a logic located in the [AdjacentParkingLotCalculatorService](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Service/AdjacentParkingSlotCalculatorService.php) to compute if the inquried parking slot can accommodate the type of vehicle
+10. There is customer validation [Rules](https://github.com/inonbaguio/roofr-parking-design/tree/master/src/myapp/modules/Parking/src/Http/Rules).
+   - [FutureTimeRule](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Rules/FutureTimeRule.php)
+   - [MinimumParkingTimeInterval](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Rules/MinimumParkingTimeInterval.php)
 
 ## Sample API Requests:
 
@@ -48,10 +52,9 @@ curl --location 'http://localhost:8081/api/parking-lot/reserve/' \
 
 ## Assumptions
 1. The user is already authenticated and the user_id is passed in the request. I have not included an authentication layer on this project, I guess the highlight of this project should be the actual reservation of the parkign system
-2. There is a logic located in the [AdjacentParkingLotCalculatorService](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Service/AdjacentParkingSlotCalculatorService.php) to compute if the inquried parking slot can accommodate the type of vehicle
-3. There is customer validation [Rules](https://github.com/inonbaguio/roofr-parking-design/tree/master/src/myapp/modules/Parking/src/Http/Rules).
-   - [FutureTimeRule](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Rules/FutureTimeRule.php)
-   - [MinimumParkingTimeInterval](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Rules/MinimumParkingTimeInterval.php)
+2. Assumed that each parking should always be in the future and a minimum of 30minutes interval
+3. Parking Lot is charged per hour basis
+
 
 ## Future Improvements
 1. Add a proper authentication layer. JWT authentication
