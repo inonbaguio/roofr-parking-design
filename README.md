@@ -23,7 +23,7 @@
 
 ## Sample API Requests:
 
-**IMPORTANT:** Ensure that we have run the db seeders
+**IMPORTANT:** Ensure that we have ran the db seeders
 
 ### /GET/api/parking-lots
 
