@@ -49,6 +49,12 @@ return [
             'search_path' => 'public',
             'sslmode' => 'prefer',
         ],
+
+        'testing' => [
+            'driver' => 'sqlite',
+            'database' => env('DB_DATABASE', ':memory:'),
+            'prefix' => '',
+        ],
     ],
 
     /*

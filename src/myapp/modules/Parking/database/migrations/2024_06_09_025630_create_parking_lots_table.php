@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('location_description');
             $table->enum('zone', ['A', 'B', 'C', 'D']);
+            $table->decimal('latitude', 10, 8);
+            $table->decimal('longitude', 11, 8);
             $table->decimal('rate_per_hour', 8, 2);
             $table->enum('status', ['available', 'reserved', 'occupied']);
             $table->timestamps();
