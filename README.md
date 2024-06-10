@@ -18,7 +18,8 @@
 4. [ReserveParkingLot](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Actions/ReserveParkingLot.php) contains the main business logic for reserving a parking lot.
 5. There is a simple implementation of Event/Listeners as well to abstract the logic of sending an email to the user, updating the stastuses of the parking and booking
 6. TestCases are located in the [ParkingControllerTest](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/tests/Api/ParkingControllerTest.php)
-7. I have made some changes in the [fastcgi_cache](https://github.com/inonbaguio/roofr-parking-design/blob/master/nginx/conf.d/app.conf#L40), we might want to avoid these kind of caching mechanism in development nginx setups. The full response of the HTTP is being hard-cache in the containers.
+7. There are some factories as well located in [ParkingLotFactory](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/database/factories/ParkingLotFactory.php), [BookingFactory](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Booking/database/factories/BookingFactory.php)
+8. I have made some changes in the [fastcgi_cache](https://github.com/inonbaguio/roofr-parking-design/blob/master/nginx/conf.d/app.conf#L40), due to some caching issues that I encountered during development. (i.e.: whole API responses is being cached by the containers and had to restart for code changes to take effect)
 
 ## Sample API Requests:
 
