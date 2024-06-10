@@ -8,3 +8,19 @@
 4. Run `docker-compose exec my-app composer install -o`
 3. Run `docker-compose exec my-app php artisan migrate`
 4. Load in browser http://localhost:8081
+
+## Main Changes
+
+1. I have designed this with a modular code structure, so that the code is more maintainable and scalable.
+2. The root of the implementation is in the [ParkingController](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Controllers/ParkingController.php)
+3. I used laravel-data as the main DTO for the data transfer between the controller and the service layer.
+4. [ReserveParkingLot](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Actions/ReserveParkingLot.php) contains the main business logic for reserving a parking lot.
+5. There is a simple implementation of Event/Listeners as well to abstract the logic of sending an email to the user, updating the stastuses of the parking and booking
+6. TestCases are located in the [ParkingControllerTest](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/tests/Api/ParkingControllerTest.php)
+
+## Assumptions
+1. The user is already authenticated and the user_id is passed in the request. I have not included an authentication layer on this project, I guess the highlight of this project should be the actual reservation of the parkign system
+2. There is a logic located in the [AdjacentParkingLotCalculatorService](https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Service/AdjacentParkingSlotCalculatorService.php) to compute if the inquried parking slot can accommodate the type of vehicle
+3. There is customer validation (Rules)[https://github.com/inonbaguio/roofr-parking-design/tree/master/src/myapp/modules/Parking/src/Http/Rules].
+   - (FutureTimeRule)[https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Rules/FutureTimeRule.php]
+   - (MinimumParkingTimeInterval)[https://github.com/inonbaguio/roofr-parking-design/blob/master/src/myapp/modules/Parking/src/Http/Rules/MinimumParkingTimeInterval.php]
