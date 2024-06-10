@@ -22,6 +22,8 @@
 
 ## Sample API Requests:
 
+**IMPORTANT:** Ensure that we have run the db seeders
+
 ### /GET/api/parking-lots
 
 ```
