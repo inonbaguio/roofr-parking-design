@@ -52,7 +52,7 @@ curl --location 'http://localhost:8081/api/parking-lot/reserve/' \
 ```
 
 ## Assumptions
-1. The user is already authenticated and the user_id is passed in the request. I have not included an authentication layer on this project, I guess the highlight of this project should be the actual reservation of the parkign system
+1. The user is already authenticated and the user_id is passed in the request. I have not included an authentication layer on this project, I guess the highlight of this project should be the actual reservation of the parking system
 2. Assumed that each parking should always be in the future and a minimum of 30minutes interval
 3. Parking Lot is charged per hour basis
 
