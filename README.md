@@ -1,4 +1,4 @@
-# Technical Interview Challenge 1
+# Parking Design
 
 ## Installation
 
